@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>签名生成器</title>
+    <style>
+      * {
+        margin: 0;
+      }
+      body {
+        width: 960px;
+        margin: 0 auto;
+        font-family: Helvetica;
+      }
+      h1 {
+        font-size: 24px;
+        height: 50px;
+        line-height: 50px;
+        border-bottom: 1px solid #ccc;
+      }
+      .generator, #signature {
+        margin-top: 10px;
+      }
+      .generator {
+        float: left;
+      }
+      #signature, .clipboard {
+        width: 600px;
+        float: right;
+      }
+      #signature {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-top: 1px solid #000;
+        border-bottom: 1px solid #000;
+      }
+      .generator label {
+        display: block;
+        width: 280px;
+        height: 32px;
+        margin-bottom: 5px;
+        line-height: 32px;
+        font-weight: bold;
+      }
+      .generator label input {
+        float: right;
+        width: 180px;
+        height: 26px;
+      }
+      .generator button {
+        width: 280px;
+        height: 40px;
+        background-color: #fff;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+      }
+      .tips {
+        margin-top: 10px;
+        padding: 5px;
+        border: 1px dashed #000;
+      }
+      .tips h2 {
+        font-size: 18px;
+      }
+      .tips p {
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 5px;
+      }
+      .clipboard {
+        margin-top: 10px;
+      }
+      .clipboard h2 {
+        font-size: 18px;
+        margin-bottom: 5px;
+      }
+      .clipboard textarea {
+        width: 600px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Beansmile Email Signature Generator</h1>
+    <div class="generator">
+      <div class="form">
+        <label for="setName">Name: <input type="text" id="setName" placeholder="Beans"></label>
+        <label for="setTitle">title: <input type="text" id="setTitle" placeholder="your title"></label>
+        <label for="setMobile">Mobile: <input type="text" id="setMobile" placeholder="mobile phone number"></label>
+        <label for="setEmail">Email: <input type="text" id="setEmail" placeholder="your email address"></label>
+        <button id="generateBtn">Generate Your Signature!</button>
+        <div class="tips">
+        <h2>Fill the form as below format:</h2>
+        <p>Name: Leon Du</p>
+        <p>Title: <br>
+                    高级开发：Senior Developer <br>
+                    中级 & 初级开发：Developer <br>
+                    测试：Test Engineer <br>
+                    产品：Product Manager <br>
+                    设计师：Designer</p>
+        <p>Mobile: 123-4567-6789</p>
+        <p>Email: leon@beansmile.com</p>
+      </div>
+      </div>
+    </div>
+    <div id="signature">
+      <div>
+        <img width="246" height="61" src="http://exmail.qq.com/cgi-bin/viewfile?type=signature&amp;picid=ZX3530-zx267VqqJtxlnAdS2s8XT57&amp;uin=2616899538">
+      </div>
+      <div>
+        <div style="line-height: 18px; font-size: small;">
+          <span id="name" style="font-weight: bold; color: #4f4f4f;">Beans</span>
+          <span> | </span>
+          <span id="title" style="font-weight: normal; font-style: italic; color: #999;">Developer</span>
+        </div>
+        <div style="line-height: 16px; font-size: small; color: #999;">
+          <span style="display: inline-block; width: 42px;">Mobile</span><span>: </span><span id="mobile">123-4567-8901</span>
+        </div>
+        <div style="line-height: 16px; font-size: small; color: #999;">
+          <span style="display: inline-block; width: 42px;">Tel</span><span>: </span><span>020-3424 0810</span>
+        </div>
+        <div style="line-height: 16px; font-size: small; color: #999;">
+          <span style="display: inline-block; width: 42px;">Office</span><span>: </span><span>Room 1016/1017, No.406-2, Huasui Road, Tianhe District, Guangzhou</span>
+        </div>
+      </div>
+      <div>
+        <div style="line-height: 18px; font-size: small;"><font color="#43A0BA"><a href="http://beansmile.com/" style="line-height: 1.5; color: rgb(67, 160, 186); text-decoration: underline;">Website</a>
+        <span>&nbsp;|&nbsp;</span>
+        <a href="http://j.map.baidu.com/1pRFr" style="line-height: 1.5; color: rgb(67, 160, 186); text-decoration: underline;">Map</a>
+        <span>&nbsp;|&nbsp;</span>
+        <a id="email" href="mailto:exmaple@beansmile.com" style="line-height: 1.5; color: rgb(67, 160, 186); text-decoration: underline;">Email</a></font>
+      </div>
+    </div>
+  </div>
+  <div class="clipboard">
+      <h2>Press "Cmd + C" To Copy Signature's HTML Code Here:</h2>
+      <textarea id="clipboard" cols="50" rows="15">
+      </textarea>
+    </div>
+  <script>
+    (function(){
+      var name, title, mobile, email;
+      var btn = document.getElementById("generateBtn");
+      function $(id) {
+        return document.getElementById(id);
+      }
+      btn.addEventListener("click", function() {
+        $("name").textContent = $("setName").value;
+        $("title").textContent = $("setTitle").value;
+        $("mobile").textContent = $("setMobile").value;
+        $("email").href = "mailto:" + $("setEmail").value;
+      }, false);
+      btn.addEventListener("click", function() {
+        $("clipboard").textContent = $("signature").innerHTML;
+        $("clipboard").select();
+      }, false);
+    })();
+  </script>
+</body>
+</html>
